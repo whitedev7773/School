@@ -1,0 +1,29 @@
+body{
+    background-image: url("/art/background.jpg");
+    color: white;
+}
+
+#container{
+    background-color:rgba(18, 45, 87, 0.192);
+    padding: 20px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 70px;
+    width: 850px;
+    backdrop-filter: blur(20px);
+}
+
+.shadow{
+    box-shadow: 50px;
+}
+
+#video{
+    width: 830px;
+    height: 450px;
+    border-radius: 50px;
+}
+
+.text-center{
+    text-align: center;
+}
