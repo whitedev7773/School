@@ -1,1 +1,53 @@
-<h1>캠벨 수프 설명</h1>
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <title>켐벨 수프 소개</title>
+    <link rel="stylesheet" href="./style/style.css">
+
+    <script>
+        let is_single_soup = true;
+        function changeImage(){
+            if (is_single_soup){
+                document.getElementById("soup_image").src = "./Soup_Multi.jpg";
+                is_single_soup = !is_single_soup;
+            }else{
+                document.getElementById("soup_image").src = "./Soup_Single.jpg";
+                is_single_soup = !is_single_soup;
+            }
+        }
+    </script>
+</head>
+</body>
+    <div id="main" class="text-center">
+        <div id="container">
+            <h1>앤디 워홀 - 켐벨 수프 소개</h1>
+            <p>2520 장기원 제작</p>
+        </div>
+        <div id="container">
+            <h1>작품 이미지</h1>
+            <img id="soup_image" src="./Soup_Single.jpg" height="500px">
+            <p>Campbell's Soup Cans By. Andy Warhol</p>
+            <button id="button" onclick="changeImage()">이미지 변경</button>
+        </div>
+        <div id="container" class="align-center">
+            <h1 class="text-center">▼ 동영상 해설</h1>
+            <div>
+                <p>준비중</p>
+                <!-- <iframe id="video"
+                src="https://www.youtube.com/embed/uzggOQKlfV8" title="YouTube video player"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
+                allowfullscreen></iframe> -->
+            </div>
+        </div>
+        <div id="container">
+            <h1 class="subtitle">영상 스크립트</h1>
+            <p>준비중</p>
+        </div>
+        <div id="container">
+            <h1 class="subtitle">작품 추가 설명</h1>
+            <p>준비중</p>
+        </div>
+    </div>
+<body>
+</html>
