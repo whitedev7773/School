@@ -33,6 +33,10 @@ img{
     border-radius: 70px;
 }
 
+#andy_image{
+    border: 10px solid #777777;
+}
+
 #banana_image{
     border: 10px solid #d5d81d;
 }
