@@ -1,0 +1,97 @@
+body {
+    text-align: center;
+}
+
+#draw_canvas_div {
+    width: 500px;
+    height: 500px;
+    box-shadow: 5px 5px 5px #00000036;
+    border-radius: 50px;
+    display: inline-block;
+
+    /* 테두리 그라데이션 */
+    border: 5px solid transparent;
+    background-image: linear-gradient(#fff, #fff), 
+    linear-gradient(to bottom, rgb(0, 162, 255) 0%,  rgb(52, 214, 87) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+#draw_canvas {
+    border-radius: 45px;
+    display: inline-block;
+}
+
+#label-container {
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    color: rgba(255, 255, 255, 0.479);
+    background: linear-gradient(45deg, #74b9ff, #a29bfe);
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #00000036;
+}
+
+#timer{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#ai_think_message{
+    font-size: 20px;
+    text-align: center;
+}
+
+#container {
+    text-align: center;
+}
+
+#buttons {
+    margin-top: 52px;
+    margin-bottom: 20px;
+}
+
+#start_button {
+    width: 180px;
+    height: 70px;
+    background: linear-gradient(45deg, #8ff194, #7fdbff);
+    border: solid #ffffff 0px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.322);
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px rgb(119, 119, 119);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+#clear_button {
+    margin-left: 2%;
+    width: 140px;
+    height: 70px;
+    background: linear-gradient(45deg, #f18f8f, #ea7fff);
+    border: solid #ffffff 0px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.322);
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px rgb(119, 119, 119);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+button:hover{
+    animation-name: scale;
+    transform: scale(1.1, 1.1);
+    background: linear-gradient(45deg, #8bb1ff, #ff84b1);
+}
+
+.detect{
+    font-weight: bold;
+    color: #06406d;
+    background-color: rgba(255, 255, 255, 0.363);
+    border-radius: 10px;
+    font-size: 18px;
+}
