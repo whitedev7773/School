@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>퀵 드로우 By Giwon</title>
+</head>
+<body>
+    <h1>QuickDraw AI에게 알려주세요!</h1>
+    <div id="container">
+        <p>새로운 주제의 그림을 그리거나 기존 주제의 새로운 그림을 알려줘서 AI를 똑똑하게 만들어주세요</p>
+    </div>
+    <div id="draw_canvas_div">
+        <canvas id="draw_canvas" width="500" height="500"></canvas>
+        <div id="input_container">
+            <label id="input_label" for="topic_input">그림의 주제 :</label>
+            <input type="text" id="topic_input">
+        </div>
+    </div>
+    <div id="buttons">
+        <button id="start_button" type="button" onclick="send_canvas()">그림 제출</button>
+        <button id="clear_button" type="button" onclick="clear_canvas()">Clear</button>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        // More API functions here:
+        // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+        // the link to your model provided by Teachable Machine export panel
+        const URL = "./my_model/";
+
+        let model, draw_canvas, labelContainer, maxPredictions;
+
+        function clear_canvas(){
+            var context;
+            context = draw_canvas.getContext('2d');
+            context.fillStyle = '#fff';
+            context.fillRect(0, 0, draw_canvas.width, draw_canvas.height);
+        }
+
+        function send_canvas(){
+            var topic = document.getElementById("topic_input").value;
+            
+            if (topic == null || topic == "") {
+                alert("그림의 주제를 입력해주세요!");
+                return;
+            }
+
+            // 그림 전송 메소드 작성
+        }
+
+        window.addEventListener("keydown", (e) => {
+            if (e.key == "Enter"){
+                send_canvas();
+            }
+        });
+    </script>
+    <script src="paint.js"> </script>
+</body>
+</html>
