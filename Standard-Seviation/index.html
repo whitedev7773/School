@@ -109,9 +109,9 @@
                     calculationText += `(${values[i].toFixed(2)} - ${mean.toFixed(2)})^2 = ${squaredDifference.toFixed(3)}\n`;
                 }
                 calculationText += `\n제곱값들의 평균 계산:\n`;
-                calculationText += `(${squaredDifferences.map(difference => difference.toFixed(3)).join(" + ")}) / ${values.length} = ${variance.toFixed(3)}\n\n`;
+                calculationText += `(${squaredDifferences.map(difference => difference.toFixed(3)).join(" + ")}) / ${values.length} = ${variance.toFixed(2)}\n\n`;
                 calculationText += `평균의 제곱근 계산:\n`;
-                calculationText += `√${variance.toFixed(3)} = ${standardDeviation.toFixed(3)}`;
+                calculationText += `√${variance.toFixed(2)} = ${standardDeviation.toFixed(2)}`;
 
                 document.getElementById("result").textContent = `표준편차: ${standardDeviation.toFixed(2)} (소수점 셋째자리에서 반올림됨)`;
                 document.getElementById("calculation").value = calculationText;
