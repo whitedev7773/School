@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>표준편차 계산기</title>
+    <style>
+        @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+
+        * {
+            font-family: 'NanumSquareAc', sans-serif;
+        }
+
+        h1 {
+            font-weight: 800;
+        }
+
+        .container {
+            margin: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 60px;
+        }
+        button {
+            margin-top: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        #calculation {
+            margin-top: 20px;
+            width: 500px;
+            height: 300px;
+            resize: vertical;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>표준편차 계산기</h1>
+        <label id="value_list">값 입력 : </label>
+        <br>
+        <input type="number" id="valueInput">
+        <button onclick="addValue()">추가</button>
+        <br>
+        <button onclick="calculateStandardDeviation()">표준편차 계산</button>
+        <button id="clear">초기화</button>
+        <div id="result" style="font-size: 20px;"></div>
+        <p style="margin-bottom: -10px">▼ 계산 과정</p>
+        <textarea id="calculation" readonly></textarea>
+        <p>p.s 웬만해선 화면 디자인하는데 이번엔 귀찮아서 안함</p>
+        <p>By. Giwon</p>
+    </div>
+
+    <script>
+        document.getElementById("clear").addEventListener("click", clear);
+        document.getElementById("valueInput").addEventListener("keydown", (e) => {
+            if (e.keyCode == 13){
+                event.preventDefault();
+                addValue();
+            }
+        });
+
+        let values = [];
+
+        function addValue() {
+            var value_list = document.getElementById("value_list");
+            const input = document.getElementById("valueInput");
+            const value = parseFloat(input.value);
+            if (!isNaN(value)) {
+                values.push(value);
+                value_list.innerText = `${value_list.innerHTML}${value} `;
+                console.log("값 추가");
+                input.value = "";
+            }
+            else {
+                alert("값 똑바로 넣으셈");
+            }
+        }
+
+        function clear() {
+            values = [];
+            document.getElementById("valueInput").value = "";
+            document.getElementById("calculation").value = "";
+            document.getElementById("value_list").innerText = "값 입력 : ";
+            value_list.innerText = '값 입력 : ';
+            document.getElementById("result").textContent = "";
+            alert("정보가 초기화됬어요.");
+        }
+
+        function calculateStandardDeviation() {
+            if (values.length > 0) {
+                const sum = values.reduce((total, value) => total + value, 0);
+                const mean = sum / values.length;
+                const squaredDifferences = values.map(value => Math.pow(value - mean, 2));
+                const variance = squaredDifferences.reduce((total, value) => total + value, 0) / values.length;
+                const standardDeviation = Math.sqrt(variance);
+
+                // 계산 과정 텍스트 생성
+                let calculationText = `평균 계산:\n`;
+                calculationText += `(${values.join(" + ")}) / ${values.length} = ${mean.toFixed(2)}\n\n`;
+                calculationText += `각 값에서 평균을 뺀 차이의 제곱 계산:\n`;
+                for (let i = 0; i < values.length; i++) {
+                    const squaredDifference = Math.pow(values[i] - mean, 2);
+                    calculationText += `(${values[i].toFixed(2)} - ${mean.toFixed(2)})^2 = ${squaredDifference.toFixed(3)}\n`;
+                }
+                calculationText += `\n제곱값들의 평균 계산:\n`;
+                calculationText += `(${squaredDifferences.map(difference => difference.toFixed(3)).join(" + ")}) / ${values.length} = ${variance.toFixed(3)}\n\n`;
+                calculationText += `평균의 제곱근 계산:\n`;
+                calculationText += `√${variance.toFixed(3)} = ${standardDeviation.toFixed(3)}`;
+
+                document.getElementById("result").textContent = `표준편차: ${standardDeviation.toFixed(2)} (소수점 셋째자리에서 반올림됨)`;
+                document.getElementById("calculation").value = calculationText;
+            } else {
+                document.getElementById("result").textContent = "값을 입력하세요.";
+                document.getElementById("calculation").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
