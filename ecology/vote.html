@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투표</title>
+</head>
+<style>
+    p.title {
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+    }
+    p.subtitle {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    #yes, #no {
+        width: 150px;
+        height: 70px;
+        margin: 10px;
+        outline: none;
+        border: none;
+        box-shadow: 0px 0px 10px 0px #00000050;
+        transition: all 0.2s ease-in-out;
+        border-radius: 30px;
+    }
+
+    #yes:hover, #no:hover {
+        transform: scale(1.05, 1.05);
+        cursor: pointer;
+    }
+
+    #yes {
+        background-color: #55efc4;
+    }
+
+    #no {
+        background-color: #ff7675;
+    }
+
+    #info-box {
+        padding: 30px;
+        background-color: #dfe6e990;
+        border-radius: 30px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+</style>
+<body>
+    <p id="message" class="title"></p>
+    <div id="info-box" class="disable">
+        <p class="subtitle">여기에 투표하시겠습니까?</p>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <button id="yes">예</button>
+            <button id="no">아니오</button>
+        </div>
+    </div>
+</body>
+<script>
+    function GetParam(key) {
+        return new URLSearchParams(location.search).get(key);
+    };
+
+    const vote_type = {
+        0 : "나는 평소에 분리 배출을 한다",
+        1 : "나는 평소에 분리배출 방법을 알지만 그냥 하지 않는다",
+        2 : "나는 평소에 분리배출 방법을 몰라서 하지 않는다",
+    }
+
+    var vote_number = parseInt(GetParam('n'));
+
+    var message = document.getElementById('message');
+    var info_box = document.getElementById('info-box');
+
+    if (vote_number.toString().toLowerCase() == "nan" || (0 > vote_number || vote_number > 2)) {
+        message.innerHTML = "잘못된 접근입니다.";
+    }
+    else {
+        message.innerHTML = vote_type[vote_number];
+        info_box.className = "active";
+    }
+
+    document.querySelector("#yes").addEventListener('click', (e) => {
+        alert(`'${message.innerHTML}'로 투표가 완료되었습니다. 참여해주셔서 감사합니다 :>`);
+        // 여기에 서버 통신
+        var server_url = `https://ecology.332s-21094.repl.co/vote?n=${vote_number}`;
+        axios.get(server_url);
+        window.close();
+    });
+
+    document.querySelector("#no").addEventListener('click', (e) => {
+        alert(`창이 종료됩니다. 만일 종료되지 않는다면 수동으로 탭을 꺼주세요`);
+        window.close();
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</html>
