@@ -41,7 +41,11 @@
         background-color: #ff7675;
     }
 
-    #info-box {
+    #info-box.disable {
+        display: none;
+    }
+
+    #info-box.active {
         padding: 30px;
         background-color: #dfe6e990;
         border-radius: 30px;
@@ -77,6 +81,7 @@
 
     if (vote_number.toString().toLowerCase() == "nan" || (0 > vote_number || vote_number > 2)) {
         message.innerHTML = "잘못된 접근입니다.";
+        info_box.className = "disable";
     }
     else {
         message.innerHTML = vote_type[vote_number];
