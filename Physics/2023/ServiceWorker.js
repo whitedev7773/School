@@ -5,7 +5,6 @@ const contentToCache = [
     "Build/Build.data",
     "Build/Build.wasm",
     "TemplateData/style.css"
-
 ];
 
 self.addEventListener('install', function (e) {
